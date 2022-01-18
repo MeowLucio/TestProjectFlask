@@ -1,0 +1,26 @@
+{% extends 'title.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<div class="container">
+       <img class="mb-4" class="form-control" src="https://img.freepik.com/free-photo/cute-persian-cat-is-sitting-on-a-green-grass-field_34645-1091.jpg?size=626&ext=jpg" width="360" height="285">
+        <h1 class="h3 mb-3 fw-normal">Пожалуйста зарегистрируйтесь</h1>
+      <form method="post">
+          <input type="str" name="NickName" id="NickName" class="form-control" placeholder="Лизя бяка, Зико гавнюк">
+          <input type="str" name="Login" id="Login" class="form-control" placeholder="Логин, минимум 4 символа, максимум 16, не может совпадать с никнеймом">
+          <input type="Password" name="Password" id="Password" class="form-control"  placeholder="Пароль, минимум 5 символов, как минимум 1 цифра и буква верхнего и нижнего регистра, максимум 16 символов">
+          <input type="submit" class="btn btn-success" value="Регистрация">
+      </form>
+{% endblock %}

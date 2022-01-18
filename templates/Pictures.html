@@ -1,0 +1,35 @@
+{% extends 'title.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+<h1>Картинки</h1>
+ </form action="/" method="post">
+    <form action="/addImage" method="post" enctype="multipart/form-data">
+        <label>Файл JPG или PNG:</label>
+        <input type="file" name="file" id="file" accept=".jpg,.jpeg,.png">
+        <button type="submit">Добавить картинку</button>
+    </form>
+    {% for pict in pictures %}
+        <div>
+            <h2>{{pict.NickName}}</h2>
+            <p><img src="static/{{pict.id}}.jpg" alt="static\{{pict.id}}.jpg"></p>
+            <p><b> Дата: {{pict.Date}}</b></p>
+        </div>
+
+        {% for com in comments %}
+            {% if pict.id == com.idImage: %}
+                <h3>{{com.NickName}}:{{com.Text}} </h3>
+                <h4>Дата: {{com.Date}}</h4>
+            {% endif %}
+        {% endfor %}
+
+        <form action="addComment/{{pict.id}}" method="post">
+            <input type="text" name="Comment" id="{{pict.id}}" class="form-control" placeholder="Ваш комментарий"><br>
+            <button type="submit">Добавить комментарий</button>
+        </form>
+
+    {% endfor %}
+</form>
+{% endblock %}

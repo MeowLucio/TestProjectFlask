@@ -1,0 +1,24 @@
+{% extends 'title.html' %}
+
+{% block title %}
+{% endblock %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+{% block body %}
+<div class="container">
+    <h1>Я на проверке токена </h1>
+    <form method="post">
+        <input type="integer" name="ID_Token" id="ID_Token" class="form-control" placeholder="Вставте уникальный код"><br>
+        <input type="submit" class="btn btn-success" value="Отправить">
+    </form>
+
+</div>
+{% endblock %}

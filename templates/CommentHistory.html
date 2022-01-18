@@ -1,0 +1,24 @@
+{% extends 'title.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+ {% for pict in pictures %}
+        <p><img src="static/{{pict}}.jpg" alt="static\{{pict}}.jpg"></p>
+        </form>
+        {% for com in comments %}
+            {% if pict == com.idImage: %}
+                <h3>{{com.NickName}}:{{com.Text}} </h3>
+                <h4>Дата: {{com.Date}}</h4>
+                <a href="checkCommentHistory/delet/{{com.id}}" class="btn btn-danger">Удалить</a>
+                <form action="updateComment/{{com.id}}" method="post">
+                <input type="text" name="Comment" id="{{pict}}" class="form-control" placeholder="Ваш комментарий"><br>
+                <button type="submit">Изменить</button>
+                </form>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+        </form>
+{% endblock %}

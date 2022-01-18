@@ -1,0 +1,39 @@
+{% extends 'title.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<body class="text-center">
+
+    <main class="form-signin">
+      <form method="post">
+        <img class="mb-4" src="https://www.fonstola.ru/pic/202012/1024x768/fonstola.ru-421326.jpg"" width="360" height="285">
+        <h1 class="h3 mb-3 fw-normal">Пожалуйста авторизуйтесь</h1>
+
+        <div class="form-floating">
+          <input type="str"  name="Login" id="Login" placeholder="Логин">
+        </div>
+        <div class="form-floating">
+          <input type="password"  name="Password" id="Password" placeholder="Пароль">
+        </div>
+        <div class="checkbox mb-3">
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
+        </form>
+      </form>
+          <a href="{{url_for('registration')}}">Регистрация</a>
+      </form>
+    </main>
+</body>
+{% endblock %}

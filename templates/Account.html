@@ -1,0 +1,33 @@
+{% extends 'title.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+<h1>Я в аккаунте {{NickName}}</h1>
+    <h1>Проверка URL</h1>
+    <form method="post">
+        <input type="text" name="URL" id="URL" class="form-control" placeholder="Вставте URL"><br>
+        <input type="submit" id="addUrl" class="btn btn-success" value="Отправить">
+    </form>
+
+
+    <h1>История</h1>
+    <form action="/checkUrlHistory" method="post">
+        <button type="submit">История запросов URL</button>
+    </form>
+
+
+    <form action="/checkImageHistory" method="post">
+        <button type="submit">История добавленных картинок</button>
+    </form>
+
+
+    <form action="/checkCommentHistory" method="post">
+        <button type="submit">История комментариев</button>
+    </form>
+
+    <form action="/logout" method="post">
+        <button type="submit">Выход из аккаунта</button>
+    </form>
+{% endblock %}
