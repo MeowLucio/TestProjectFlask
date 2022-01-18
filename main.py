@@ -125,7 +125,7 @@ def addImage():
                 pic.Size=Size
                 pic.Byte=Byte
                 db.session.commit()
-                return home()
+                return redirect(url_for('home'))
             except:
                 return "Произошла ошибка при добавлении в базу данных"
         else:
