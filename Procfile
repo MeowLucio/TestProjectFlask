@@ -1,1 +1,1 @@
-web: qunicorn app:main
+web: qunicorn main:main
