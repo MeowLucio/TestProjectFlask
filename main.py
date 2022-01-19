@@ -14,10 +14,13 @@ import os.path
 import base64
 from tables import URLHistoryTable, tagTable, StatTable
 
+from config import SECRET_KEY
+
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.secret_key ="asfsxfsdfjoh sdhjkfose;dayuhr o;wejhgdrflghweol;s"
+app.secret_key =SECRET_KEY
 db = SQLAlchemy(app)
 manager = LoginManager(app)
 
@@ -114,19 +117,14 @@ def addImage():
             try:
                 db.session.add(pic)
                 db.session.commit()
-                file = open(f"static\{str(pic.id)}.jpg", "wb")
-                file.write(imageData)
-                file.close()
-                f = open(f"static\{str(pic.id)}.jpg", "rb")
-                Size = os.path.getsize(f"static\{str(pic.id)}.jpg")
-                Byte=enc64(f.read())
-                f.close()
-                file.close()
+                Byte=enc64(imageData)
+                Size = len(imageData)
                 pic.Size=Size
-                pic.Byte=Byte
+                pic.Byte=Byte.decode('utf-8')
                 db.session.commit()
                 return redirect(url_for('home'))
-            except:
+            except Exception as e:
+                print("Error:", e)
                 return "Произошла ошибка при добавлении в базу данных"
         else:
             return home()
