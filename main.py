@@ -14,7 +14,7 @@ import os.path
 import base64
 from tables import URLHistoryTable, tagTable, StatTable
 
-from config import SECRET_KEY
+from config import SECRET_KEY, extension_accept_list
 
 
 app = Flask(__name__)
@@ -108,6 +108,14 @@ def home():
 @app.route('/addImage', methods=['GET', 'POST'])
 @login_required
 def addImage():
+    is_accepted_extension = 0
+    for ext in extension_accept_list:
+        if(ext == request.files['file'].content_type.split("/")[1]):
+            is_accepted_extension=1
+            break
+    if(not is_accepted_extension):
+        return "Недопустимое разрешение файла"
+
     imageData = request.files['file'].read()
 
     _user = current_user.NickName
