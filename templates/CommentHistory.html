@@ -6,7 +6,7 @@
 
 {% block body %}
  {% for pict in pictures %}
-        <p><img src="static/{{pict}}.jpg" alt="static\{{pict}}.jpg"></p>
+        <p><img src="data:image/gif;base64,{{pict.Byte}" alt="static\{{pict}}.jpg"></p>
         </form>
         {% for com in comments %}
             {% if pict == com.idImage: %}
