@@ -5,9 +5,9 @@
 {% endblock %}
 
 {% block body %}
-    {% for pict in article %}
+    {% for pict in pictures %}
                 <h2>{{pict.NickName}}</h2>
-                <p><img src="data:image/gif;base64,{{pict.Byte}" alt="static\{{pict.id}}.jpg"></p>
+                <p><img src="data:image/gif;base64,{{pict.Byte}}" alt="ОШИБОЧКА"></p>
                 <p><b> Дата: {{pict.Date}}</b></p>
                 <a href="checkImageHistory/{{pict.NickName}}/delet/{{pict.id}}" class="btn btn-danger">Удалить</a>
                 <a href="checkImageHistory/{{pict.NickName}}/update/{{pict.id}}" class="btn btn-succesess">Поднять в рейтинге</a>

@@ -215,11 +215,13 @@ def updrateImage(NickName, id):
 def checkCommentHistory():
     commentsId = Comments.query.filter(Comments.NickName == current_user.NickName).all()
     PicturesId  = []
-    for comm in commentsId:
-        PicturesId.append(comm.idImage)
-    UniquePicturestId=set(PicturesId)
+    for comm in set(commentsId):
+        PicturesId.append(Pictures.query.filter(Pictures.id == comm.idImage).first())
+    PicturesId = set(PicturesId)
+    print(PicturesId)
 
-    return render_template("CommentHistory.html",  comments=commentsId, pictures=UniquePicturestId)
+
+    return render_template("CommentHistory.html",  comments=commentsId, pictures=PicturesId)
 
 
 @app.route('/checkCommentHistory/delet/<int:id>', methods=['GET', 'POST'])
