@@ -5,10 +5,10 @@
 {% endblock %}
 
 {% block body %}
- {% for pict in pictures %}
+ {% for pict in articlePic %}
         <p><img src="data:image/gif;base64,{{pict.Byte}" alt="static\{{pict}}.jpg"></p>
         </form>
-        {% for com in comments %}
+        {% for com in articleComment %}
             {% if pict == com.idImage: %}
                 <h3>{{com.NickName}}:{{com.Text}} </h3>
                 <h4>Дата: {{com.Date}}</h4>

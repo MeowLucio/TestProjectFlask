@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    {% for pict in pictures %}
+    {% for pict in article %}
                 <h2>{{pict.NickName}}</h2>
                 <p><img src="data:image/gif;base64,{{pict.Byte}" alt="static\{{pict.id}}.jpg"></p>
                 <p><b> Дата: {{pict.Date}}</b></p>
